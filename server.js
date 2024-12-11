@@ -43,7 +43,7 @@ const visitasRoutes=require('./visitasRoutes');
 // usar rutas
 
 app.use('/',usuariosRoutes);
-app.use('/',visitasRoutes);
+app.use('/visitas',visitasRoutes);
 
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
