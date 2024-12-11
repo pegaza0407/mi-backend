@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGODB_URI,{
 // importar las rutas de  los usuarios desde el archivo user router.
 
 const usuariosRoutes=require('./userRoutes');
-const visitasRoutes=require('./userRoutes');
+const visitasRoutes=require('./visitasRoutes');
 
 // usar rutas
 
