@@ -9,17 +9,19 @@ const router=express.Router();
 
 //definir un esquema del usuario utilizando mongoose
 
-const userSchema =new mongoose.Schema({
-    //campo name es un string y es obligatorio
-    name:{type:String,required:true},
-    // campo phonenumber es tipo string y es obligatorio
-    phonenumber:{type:String,required:true}
-
+const visitaSchema =new mongoose.Schema({
+        nom_ferre:{type:String,required:true},
+        ciudad:{type:String,required:true},
+        estado:{type:String,required:true},
+        nombreencargado:{type:String,required:true},
+        telefono:{type:String,required:true},
+        label_registro:{type:String,required:true},
+        fechavisita:{type:Date,required:true},
 });
 
 //crear modelo usuario basado en el esquema definido.
 
-const User=mongoose.model('User',userSchema);
+const Visita=mongoose.model('Visita',visitaSchema);
 
 //ruta POST crear un nuevo usuario.
 
@@ -27,11 +29,11 @@ router.post('/',async(req,res)=>{
 
     try{
         //crear  un usuario basado en los datos enviados en el cuerpo de la solicitud
-     const user=new User(req.body);
+     const visita=new Visita(req.body);
      // guarda el usuario en la base de datos
-     await user.save();
+     await visita.save();
      // enviar una respueta con el usuario que creeamos con elcodigo 201 significa se ha creado
-        res.status(201).json(user);
+        res.status(201).json(visita);
     }catch(error){
         // si ocurre un error, enviar un codigo 400 con el mensaje de error
         res.status(400).json({message: error.message});
@@ -43,8 +45,8 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try{
-        const users=await User.find();
-        res.json(users);
+        const visitas=await Visita.find();
+        res.json(visitas);
 
     } catch(error){
         res.status(500).json({message:error.message});
@@ -54,8 +56,8 @@ router.get('/',async(req,res)=>{
 
 router.put('/:id',async(req,res)=>{
     try{
-        const users=await User.findByIdAndUpdate(req.params.id,req.body,{new:true});
-        res.json(users);
+        const visitas=await Visita.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        res.json(visitas);
 
     } catch(error){
         res.status(400).json({message:error.message});
@@ -65,8 +67,8 @@ router.put('/:id',async(req,res)=>{
 
 router.delete('/:id',async(req,res)=>{
     try{
-        await User.findByIdAndDelete(req.params.id);
-        res.json({message:'Usuario eliminado'});
+        await Visita.findByIdAndDelete(req.params.id);
+        res.json({message:'Visita eliminada'});
 
     } catch(error){
         res.status(500).json({message:error.message});
@@ -75,5 +77,3 @@ router.delete('/:id',async(req,res)=>{
 });
 
 module.exports=router;
-
-

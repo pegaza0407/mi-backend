@@ -38,10 +38,12 @@ mongoose.connect(process.env.MONGODB_URI,{
 // importar las rutas de  los usuarios desde el archivo user router.
 
 const usuariosRoutes=require('./userRoutes');
+const visitasRoutes=require('./userRoutes');
 
 // usar rutas
 
 app.use('/',usuariosRoutes);
+app.use('/',visitasRoutes);
 
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
