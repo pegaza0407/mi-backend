@@ -39,11 +39,13 @@ mongoose.connect(process.env.MONGODB_URI,{
 
 const usuariosRoutes=require('./userRoutes');
 const visitasRoutes=require('./visitasRoutes');
+const visitasRoutesdos=require('./visitasdosrouts');
 
 // usar rutas
 
 app.use('/',usuariosRoutes);
 app.use('/visitas',visitasRoutes);
+app.use('/visitasdos',visitasRoutesdos);
 
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
