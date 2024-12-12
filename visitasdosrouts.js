@@ -22,7 +22,7 @@ const visitaSchema =new mongoose.Schema({
 
 //crear modelo usuario basado en el esquema definido.
 
-const Visita=mongoose.model('Visita',visitaSchema);
+const Visita=mongoose.model('Visitados',visitaSchema);
 
 //ruta POST crear un nuevo usuario.
 
