@@ -17,6 +17,7 @@ const visitaSchema =new mongoose.Schema({
         telefono:{type:String,required:true},
         label_registro:{type:String,required:true},
         fechavisita:{type:Date,required:true},
+        imagen:{type:String,required:true},
 });
 
 //crear modelo usuario basado en el esquema definido.
