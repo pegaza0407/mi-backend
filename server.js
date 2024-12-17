@@ -13,8 +13,8 @@ const app=express();
 //middleware para habilitarse cors
 
 // Middleware para procesar JSON y permitir grandes cargas
-app.use(express.json({ limit: '10mb' })); // Permite JSON hasta 10MB   // midleares para analizar las solicitudes en formato jason
-app.use(express.urlencoded({ limit: '10mb', extended: true })); // Permite formularios grandes
+app.use(express.json({ limit: '50mb' })); // Permite JSON hasta 10MB   // midleares para analizar las solicitudes en formato jason
+app.use(express.urlencoded({ limit: '50mb', extended: true })); // Permite formularios grandes
 
 app.use(cors());
 
