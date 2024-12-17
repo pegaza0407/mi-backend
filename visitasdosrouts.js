@@ -9,7 +9,7 @@ const router=express.Router();
 
 //definir un esquema del usuario utilizando mongoose
 
-const visitaSchema =new mongoose.Schema({
+const visitadosSchema =new mongoose.Schema({
         nom_ferre:{type:String,required:true},
         ciudad:{type:String,required:true},
         estado:{type:String,required:true},
@@ -22,7 +22,7 @@ const visitaSchema =new mongoose.Schema({
 
 //crear modelo usuario basado en el esquema definido.
 
-const Visita=mongoose.model('Visitados',visitaSchema);
+const Visitad=mongoose.model('Visitados',visitadosSchema);
 
 //ruta POST crear un nuevo usuario.
 
@@ -30,7 +30,7 @@ router.post('/',async(req,res)=>{
 
     try{
         //crear  un usuario basado en los datos enviados en el cuerpo de la solicitud
-     const visita=new Visita(req.body);
+     const visita=new Visitad(req.body);
      // guarda el usuario en la base de datos
      await visita.save();
      // enviar una respueta con el usuario que creeamos con elcodigo 201 significa se ha creado
@@ -46,7 +46,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try{
-        const visitas=await Visita.find();
+        const visitas=await Visitad.find();
         res.json(visitas);
 
     } catch(error){
@@ -57,7 +57,7 @@ router.get('/',async(req,res)=>{
 
 router.put('/:id',async(req,res)=>{
     try{
-        const visitas=await Visita.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        const visitas=await Visitad.findByIdAndUpdate(req.params.id,req.body,{new:true});
         res.json(visitas);
 
     } catch(error){
@@ -68,7 +68,7 @@ router.put('/:id',async(req,res)=>{
 
 router.delete('/:id',async(req,res)=>{
     try{
-        await Visita.findByIdAndDelete(req.params.id);
+        await Visitad.findByIdAndDelete(req.params.id);
         res.json({message:'Visita eliminada'});
 
     } catch(error){
