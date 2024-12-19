@@ -13,10 +13,6 @@ const vendedoresEsquema = new mongoose.Schema({
     peg_ima_clien: { type: String, required: true },
     peg_sino_clien: { type: Boolean, required: true },
     peg_ubi_clien: {type: String, required: true }
-
-
-
- 
 });
 
 const Vendedores = mongoose.model('Vendedores', vendedoresEsquema);
