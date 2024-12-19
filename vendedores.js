@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 const vendedoresEsquema = new mongoose.Schema({
-    peg_num_clien: { type: Number, required: true, unique: true },
+    peg_num_clien: { type: String, required: true},
     peg_nom_clien: { type: String, required: true },
     peg_ciu_clien: { type: String, required: true },
     peg_est_clien: { type: String, required: true },
