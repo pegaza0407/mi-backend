@@ -10,14 +10,28 @@ const router=express.Router();
 //definir un esquema del usuario utilizando mongoose
 
 const vendedoresEsquema =new mongoose.Schema({
-        nom_ferre:{type:String,required:true},
-        ciudad:{type:String,required:true},
-        estado:{type:String,required:true},
-        nombreencargado:{type:String,required:true},
-        telefono:{type:String,required:true},
+    peg_num_clien:{type:String,required:true},
+    peg_nom_clien:{type:String,required:true},
+    peg_ciu_clien:{type:String,required:true},
+    peg_est_clien:{type:String,required:true},
+    peg_nom_enc_clien:{type:String,required:true},
+    peg_tel_clien:{type:String,required:true},
+    peg_tex_clien:{type:String,required:true},
+    peg_ima_clien:{type:String,required:true},
+    peg_sino_clien:{type:Boolean,required:true},
+    peg_ubi_clien:{type:String,required:true},
+    
+
+
+
+      //  nom_ferre:{type:String,required:true},
+       // ciudad:{type:String,required:true},
+       // estado:{type:String,required:true},
+       // nombreencargado:{type:String,required:true},
+       // telefono:{type:String,required:true},
         //label_registro:{type:String,required:true},
         //fechavisita:{type:Date,required:true},
-        imagen:{type:String,required:true},
+       // imagen:{type:String,required:true},
 });
 
 //crear modelo usuario basado en el esquema definido.
