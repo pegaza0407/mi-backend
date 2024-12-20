@@ -44,6 +44,7 @@ mongoose.connect(process.env.MONGODB_URI,{
 //const usuariosRoutes=require('./userRoutes');
 //const visitasRoutes=require('./visitasRoutes');
 //const visitasRoutesdos=require('./visitasdosrouts');
+const VarVillarealagregarpisoRuta=require('./villarealagregarpisos');
 const vendedoresRuta=require('./vendedores');
 //const visitarealRuta=require('./visitareal');
 
@@ -53,6 +54,7 @@ const vendedoresRuta=require('./vendedores');
 //app.use('/visitas',visitasRoutes);
 //app.use('/visitados',visitasRoutesdos);
 app.use('/vendedores',vendedoresRuta);
+app.use('/villarealagregarpisos',VarVillarealagregarpisoRuta);
 //app.use('/visitareal',visitarealRuta);
 
 
