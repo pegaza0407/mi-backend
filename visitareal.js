@@ -18,7 +18,7 @@ const visitarealEsquema =new mongoose.Schema({
 
 //crear modelo usuario basado en el esquema definido.
 
-const Visitareal=mongoose.model('Visitareal',visitarealEsquema);
+const Modvisitavendedor=mongoose.model('vendedoresvisista',visitarealEsquema);
 
 //ruta POST crear un nuevo usuario.
 
@@ -26,7 +26,7 @@ router.post('/',async(req,res)=>{
 
     try{
         //crear  un usuario basado en los datos enviados en el cuerpo de la solicitud
-     const visitapost=new Visitareal(req.body);
+     const visitapost=new Modvisitavendedor(req.body);
      // guarda el usuario en la base de datos
      await visitapost.save();
      // enviar una respueta con el usuario que creeamos con elcodigo 201 significa se ha creado
@@ -42,7 +42,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try{
-        const visitapost=await Visitareal.find();
+        const visitapost=await Modvisitavendedor.find();
         res.json(visitapost);
 
     } catch(error){
@@ -53,7 +53,7 @@ router.get('/',async(req,res)=>{
 
 router.put('/:id',async(req,res)=>{
     try{
-        const visitapost=await Visitareal.findByIdAndUpdate(req.params.id,req.body,{new:true});
+        const visitapost=await Modvisitavendedor.findByIdAndUpdate(req.params.id,req.body,{new:true});
         res.json(visitapost);
 
     } catch(error){
@@ -64,7 +64,7 @@ router.put('/:id',async(req,res)=>{
 
 router.delete('/:id',async(req,res)=>{
     try{
-        await Visitareal.findByIdAndDelete(req.params.id);
+        await Modvisitavendedor.findByIdAndDelete(req.params.id);
         res.json({message:'Visita eliminada'});
 
     } catch(error){
