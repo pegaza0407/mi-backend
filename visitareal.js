@@ -10,10 +10,11 @@ const router=express.Router();
 //definir un esquema del usuario utilizando mongoose
 
 const visitarealEsquema =new mongoose.Schema({
-        vendedorid:{type:mongoose.Schema.Types.ObjectId,ref:'Vendedores',required:true},
-        label_registro:{type:String,required:true},
-        fechavisita:{type:Date,required:true},
+        ferreteriaId:{type:mongoose.Schema.Types.ObjectId,ref:'Vendedores',required:true},
+        descripcion:{type:String,required:true},
+        fecha:{type:Date,required:true},
         
+         
 });
 
 //crear modelo usuario basado en el esquema definido.
