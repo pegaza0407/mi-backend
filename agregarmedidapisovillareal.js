@@ -12,7 +12,7 @@ const agregarmedidapisovillarealEsquema = new mongoose.Schema({
 });
 
 
-const Modagregarmedidapisovillareal = mongoose.model('Villarealagregarpiso', agregarmedidapisovillarealEsquema);
+const Modagregarmedidapisovillareal = mongoose.model('Villarealagregardatos', agregarmedidapisovillarealEsquema);
 
 router.post('/', async (req, res) => {
     try {
