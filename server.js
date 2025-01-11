@@ -57,9 +57,9 @@ const VaragregarMedidadepiso=require('./agregarmedidapisovillareal');
 //app.use('/visitas',visitasRoutes);
 //app.use('/visitados',visitasRoutesdos);
 app.use('/vendedores',vendedoresRuta);
-app.use('/villarealagregarpisos',VarVillarealagregarpisoRuta);
+app.use('/agregarmedidapisovillareal',VarVillarealagregarpisoRuta);
 app.use('/vendedoresvisista',Varvisitavendedor);
-app.use('/agregarmedidapisovillareal',VaragregarMedidadepiso);
+app.use('/villarealagregarpisos',VaragregarMedidadepiso);
 //app.use('/visitareal',visitarealRuta);
 
 
