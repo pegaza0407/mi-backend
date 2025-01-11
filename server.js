@@ -41,29 +41,19 @@ mongoose.connect(process.env.MONGODB_URI,{
 
 // importar las rutas de  los usuarios desde el archivo user router.
 
-//const usuariosRoutes=require('./userRoutes');
-//const visitasRoutes=require('./visitasRoutes');
-//const visitasRoutesdos=require('./visitasdosrouts');
-
 const VarVillarealagregarpisoRuta=require('./villarealagregarpisos');
 const Varvisitavendedor=require('./visitareal');
 const vendedoresRuta=require('./vendedores');
 const agregarDatosRouter=require('./agregarmedidapisovillareal');
-//const visitarealRuta=require('./visitareal');
+const medidaRouter=require('./medida');
 
 // usar rutas
 
-//app.use('/',usuariosRoutes);
-//app.use('/visitas',visitasRoutes);
-//app.use('/visitados',visitasRoutesdos);
 app.use('/vendedores',vendedoresRuta);
 app.use('/agregarpisos',VarVillarealagregarpisoRuta);
 app.use('/vendedoresvisista',Varvisitavendedor);
 app.use('/agregardatos',agregarDatosRouter);
-
-//app.use('/visitareal',visitarealRuta);
-
-
+app.use('/medida',medidaRouter);
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
 const PORT = process.env.PORT || 5000;
