@@ -46,6 +46,10 @@ const Varvisitavendedor=require('./visitareal');
 const vendedoresRuta=require('./vendedores');
 const agregarDatosRouter=require('./agregarmedidapisovillareal');
 const medidaRouter=require('./medida');
+const colorRouter=require('./color');
+const cajamedidaRouter=require('./cajamedida');
+const tipoRouter=require('./tipo');
+const proveedorRouter=require('./proveedor');
 
 // usar rutas
 
@@ -54,6 +58,10 @@ app.use('/agregarpisos',VarVillarealagregarpisoRuta);
 app.use('/vendedoresvisista',Varvisitavendedor);
 app.use('/agregardatos',agregarDatosRouter);
 app.use('/medida',medidaRouter);
+app.use('/color',colorRouter);
+app.use('/cajamedida',cajamedidaRouter);
+app.use('/tipo',tipoRouter);
+app.use('/proveedor',proveedorRouter);
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
 const PORT = process.env.PORT || 5000;
