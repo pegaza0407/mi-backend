@@ -4,12 +4,13 @@ const router = express.Router();
 
 const agregarmedidapisovillarealEsquema = new mongoose.Schema({
 
-    medidaagregar_villa_productos:{type:String,required:true};
-    coloragregar_villa_productos:{type:String,required:true};
-    cajaagregarmedida_villa_productos:{type:String,required:true};
-    proveedoragregarnom_villa_productos:{type:String,required:true};
-    tipoagregar_villa_productos:{type:String,required:true};
+    medidaagregar_villa_productos:{type:String,required:true},
+    coloragregar_villa_productos:{type:String,required:true},
+    cajaagregarmedida_villa_productos:{type:String,required:true},
+    proveedoragregarnom_villa_productos:{type:String,required:true},
+    tipoagregar_villa_productos:{type:String,required:true},
 });
+
 
 const Modagregarmedidapisovillareal = mongoose.model('Villarealagregardatos', agregarmedidapisovillarealEsquema);
 
