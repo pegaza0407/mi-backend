@@ -18,6 +18,8 @@ const villarealaregreapisoEsquema = new mongoose.Schema({
     proveedornom_villa_productos:{type:String,required:true},
     imagen_villa_productos:{type:String,required:true},
     tipo_villa_productos:{type:String,required:true},
+    inventario_villa_productos:{type:String},
+    inventario_villa_productos2:{type:String},
 
   
 });
