@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const cloudinary = require('./cloudinary');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' }); // Configuración de multer para guardar temporalmente la imagen subida
+
 const villarealaregreapisoEsquema = new mongoose.Schema({
 
 
@@ -26,37 +29,35 @@ const villarealaregreapisoEsquema = new mongoose.Schema({
 
 const ModVillarealagregarpisos = mongoose.model('Villarealagregarpisos', villarealaregreapisoEsquema);
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('imagen_villa_productos'), async (req, res) => {
     try {
-        // Obtener la imagen desde el cuerpo de la solicitud
-        const image = req.body.imagen_villa_productos; // Asumimos que la imagen está en 'req.body.imagen'
+        if (!req.file) {
+            throw new Error('No se ha proporcionado ninguna imagen');
+        }
 
         // Subir la imagen a Cloudinary
-        cloudinary.uploader.upload(image, {
+        const result = await cloudinary.uploader.upload(req.file.path, {
             upload_preset: 'unsigned_upload',
             allowed_formats: ['png', 'jpg', 'jpeg', 'svg', 'ico', 'jfif', 'webp'],
-        }, async (error, result) => {
-            if (error) {
-                return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary', error });
-            }
-
-            // La URL de la imagen subida
-            const imageUrl = result.secure_url;
-
-            // Crear un nuevo objeto basado en el modelo de Mongoose
-            const vendedorpost = new ModVillarealagregarpisos({
-                ...req.body,
-                imagen_villa_productos: imageUrl // Guardar la URL de la imagen
-            });
-
-            // Guardar el nuevo objeto en la base de datos
-            await vendedorpost.save();
-
-            // Responder con el objeto guardado
-            res.status(201).json(vendedorpost);
         });
+
+        // La URL de la imagen subida
+        const imageUrl = result.secure_url;
+
+        // Crear un nuevo objeto basado en el modelo de Mongoose
+        const vendedorpost = new ModVillarealagregarpisos({
+            ...req.body,
+            imagen_villa_productos: imageUrl // Guardar la URL de la imagen
+        });
+
+        // Guardar el nuevo objeto en la base de datos
+        await vendedorpost.save();
+
+        // Responder con el objeto guardado
+        res.status(201).json(vendedorpost);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        console.error('Error al procesar la solicitud:', error);
+        res.status(500).json({ message: 'Error al procesar la solicitud', error: error.message });
     }
 });
 /*
