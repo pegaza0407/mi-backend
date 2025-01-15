@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-
+const cloudinary = require('./cloudinary');
 const villarealaregreapisoEsquema = new mongoose.Schema({
 
 
@@ -28,14 +28,49 @@ const ModVillarealagregarpisos = mongoose.model('Villarealagregarpisos', villare
 
 router.post('/', async (req, res) => {
     try {
+        // Obtener la imagen desde el cuerpo de la solicitud
+        const image = req.body.imagen_villa_productos; // Asumimos que la imagen está en 'req.body.imagen'
+
+        // Subir la imagen a Cloudinary
+        cloudinary.uploader.upload(image, {
+            upload_preset: 'unsigned_upload',
+            allowed_formats: ['png', 'jpg', 'jpeg', 'svg', 'ico', 'jfif', 'webp'],
+        }, async (error, result) => {
+            if (error) {
+                return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary', error });
+            }
+
+            // La URL de la imagen subida
+            const imageUrl = result.secure_url;
+
+            // Crear un nuevo objeto basado en el modelo de Mongoose
+            const vendedorpost = new ModVillarealagregarpisos({
+                ...req.body,
+                imagen_villa_productos: imageUrl // Guardar la URL de la imagen
+            });
+
+            // Guardar el nuevo objeto en la base de datos
+            await vendedorpost.save();
+
+            // Responder con el objeto guardado
+            res.status(201).json(vendedorpost);
+        });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+/*
+router.post('/', async (req, res) => {
+    try {
         const vendedorpost = new ModVillarealagregarpisos(req.body);
+        
         await vendedorpost.save();
         res.status(201).json(vendedorpost);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 });
-
+*/
 router.get('/', async (req, res) => {
     try {
         const vendedorpost = await ModVillarealagregarpisos.find();
