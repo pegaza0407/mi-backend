@@ -51,7 +51,7 @@ const colorRouter=require('./color');
 const cajamedidaRouter=require('./cajamedida');
 const tipoRouter=require('./tipo');
 const proveedorRouter=require('./proveedor');
-
+const imagenesRouter=require('./imagenesdepisos');
 // usar rutas
 
 app.use('/vendedores',vendedoresRuta);
@@ -63,6 +63,7 @@ app.use('/color',colorRouter);
 app.use('/cajamedida',cajamedidaRouter);
 app.use('/tipo',tipoRouter);
 app.use('/proveedor',proveedorRouter);
+app.use('/imagenes',imagenesRouter);
 // Definir el puerto donde se ejecuta el servidor (por defecto 5000).
 
 const PORT = process.env.PORT || 5000;
