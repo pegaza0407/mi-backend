@@ -9,7 +9,8 @@ const router=express.Router();
 const cloudinary = require('./cloudinary');
 const multer = require('multer');
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage }).array('imagenes', 4);
+
+const upload = multer({ storage: storage });
 //definir un esquema del usuario utilizando mongoose
 
 const imagenesEsquema =new mongoose.Schema({
