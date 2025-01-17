@@ -21,6 +21,7 @@ const villarealaregreapisoEsquema = new mongoose.Schema({
     tipo_villa_productos: { type: String, required: true },
     inventario_villa_productos: { type: String },
     inventario_villa_productos2: { type: String },
+    checkvilla:{type:Boolean},
 });
 
 const ModVillarealagregarpisos = mongoose.model('Villarealagregarpisos', villarealaregreapisoEsquema);
